@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import authRoutes from "./routes/auth.js";
-import router from "./routes/auth.js";
+import authRoutes from "./routes/authRoutes.js";
+import router from "./routes/authRoutes.js";
 
 const port = process.env.PORT || 8000;
 
