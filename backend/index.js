@@ -1,9 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-
+import morgan from "morgan";
 import authRoutes from "./routes/authRoutes.js";
-import router from "./routes/authRoutes.js";
 
 const port = process.env.PORT || 8000;
 
@@ -16,9 +15,13 @@ mongoose
   .catch((err) => {
     console.log("DB error => ", err);
   });
+//Middleware
+app.use(morgan("dev"));
+app.use(express.json());
 
 //router middleware
 app.use("/api", authRoutes);
+
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
