@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import Jumbotron from "../components/cards/jumbotron";
+import Jumbotron from "../../components/cards/jumbotron";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -32,7 +32,7 @@ export default function Register() {
 
   return (
     <div>
-      <Jumbotron title="Regiter"></Jumbotron>
+      <Jumbotron title="Đăng ký tài khoản"></Jumbotron>
 
       <div className="container mt-5">
         <div className="row">
