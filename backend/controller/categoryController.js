@@ -1,7 +1,7 @@
 import Category from "../model/category.js";
 import slugify from "slugify";
 
-export const createCategory = async (req, res) => {
+export const create = async (req, res) => {
   try {
     const { name } = req.body;
     if (!name.trim()) {
@@ -20,7 +20,7 @@ export const createCategory = async (req, res) => {
   }
 };
 
-export const updateCategory = async (req, res) => {
+export const update = async (req, res) => {
   try {
     const { name } = req.body;
     const { categoryId } = req.params;
@@ -40,7 +40,7 @@ export const updateCategory = async (req, res) => {
   }
 };
 
-export const deleteCategory = async (req, res) => {
+export const remove = async (req, res) => {
   try {
     const removed = await Category.findByIdAndDelete(req.params.categoryId);
     res.json("đã xóa item");
@@ -49,7 +49,7 @@ export const deleteCategory = async (req, res) => {
     return res.status(400).json(error.message);
   }
 };
-export const listCategory = async (req, res) => {
+export const list = async (req, res) => {
   try {
     const all = await Category.find({});
     res.json(all);
@@ -59,7 +59,7 @@ export const listCategory = async (req, res) => {
   }
 };
 
-export const readCategory = async (req, res) => {
+export const read = async (req, res) => {
   try {
     const category = await Category.findOne({ slug: req.params.slug });
     res.json(category);

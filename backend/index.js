@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import authRoutes from "./routes/authRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 
 const port = process.env.PORT || 8000;
 
@@ -23,6 +24,7 @@ app.use(express.json());
 //router middleware
 app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);

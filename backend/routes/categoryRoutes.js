@@ -5,16 +5,16 @@ const router = express.Router();
 import { requireSignin, isAdmin } from "../middlewares/authMiddlewares.js";
 //controller
 import {
-  listCategory,
-  readCategory,
-  createCategory,
-  updateCategory,
-  deleteCategory,
+  list,
+  read,
+  create,
+  update,
+  remove,
 } from "../controller/categoryController.js";
 
-router.get("/category", listCategory);
-router.get("/category/:slug", readCategory);
-router.post("/category", requireSignin, isAdmin, createCategory);
-router.put("/category/:categoryId", requireSignin, isAdmin, updateCategory);
-router.delete("/category/:categoryId", requireSignin, isAdmin, deleteCategory);
+router.get("/categories", list);
+router.get("/category/:slug", read);
+router.post("/category", requireSignin, isAdmin, create);
+router.put("/category/:categoryId", requireSignin, isAdmin, update);
+router.delete("/category/:categoryId", requireSignin, isAdmin, remove);
 export default router;
