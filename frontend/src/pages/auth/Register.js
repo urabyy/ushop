@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Jumbotron from "../../components/cards/jumbotron";
@@ -12,6 +13,7 @@ export default function Register() {
 
   //hooks
   const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export default function Register() {
         localStorage.setItem("auth", JSON.stringify(data));
         setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Đăng ký thành công");
+        navigate("/dashboard");
       }
     } catch (error) {
       toast.error("Đăng ký thất bại, hãy thử lại");
