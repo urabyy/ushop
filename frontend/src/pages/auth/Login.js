@@ -2,10 +2,15 @@ import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Jumbotron from "../../components/cards/jumbotron";
+import { useAuth } from "../../context/auth";
 
 export default function Login() {
+  //state
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  //hook
+  const [auth, setAuth] = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +23,8 @@ export default function Login() {
       if (data?.error) {
         toast.error(data.error);
       } else {
+        localStorage.setItem("auth", JSON.stringify(data));
+        setAuth({ ...auth, token: data.token, user: data.user });
         toast.success("Đăng nhập thành công");
       }
     } catch (error) {
